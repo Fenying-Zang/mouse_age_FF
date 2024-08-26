@@ -1,7 +1,20 @@
-#%% checklist:
+"""
+@author: F. Zang, based on working example from Olivier Winter
+
+checklist:
 # the paper-brain-wide-map repository should be set on the develop branch
-# the ibllib repositor should be on the spikesorting_rerun developbranch
+# the ibllib repositor should be on the develop branch
 # you are working off the internal alyx database
+
+the output dataframe includes:
+    # default info from bwm_query
+    # session: link to the data
+    # revision
+    # version: the version number of spike sorting
+    # auto_datetime
+    # included: if it is included in our current analysis?
+
+"""
 #%% 
 from one.api import ONE
 from brainwidemap import bwm_query, bwm_loading
@@ -50,4 +63,5 @@ bwm_df['included']=bwm_df['pid'].map(lambda x: True if x in pids_filtered else F
 
 #%%save the results
 datapath = '../data'
-bwm_df.to_excel(os.path.join(datapath, "check_BWM_SpikeSorting_version.xlsx"))  # 254 (out of 699) probes have '2.35.0' (revision 2024-05-06)
+bwm_df.to_csv(os.path.join(datapath, "check_BWM_SpikeSorting_version.csv"),index=False)  # 254 (out of 699) probes have '2.35.0' (revision 2024-05-06)
+# bwm_df.to_excel(os.path.join(datapath, "check_BWM_SpikeSorting_version.xlsx"))  # 254 (out of 699) probes have '2.35.0' (revision 2024-05-06)

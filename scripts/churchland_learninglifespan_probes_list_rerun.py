@@ -1,4 +1,5 @@
 """
+@author: F. Zang
 please specify the datapath if you want to save the results
 
 the output dataframe includes:
@@ -78,5 +79,7 @@ for index, row in all_probes_df.iterrows():
 all_probes_df = all_probes_df.sort_values(by='priority_score', ascending=False).reset_index(drop=True)
 
 #%save results 
-all_probes_df.to_excel(os.path.join(datapath, "churchland_learninglifespan_project_info_probes_rerun.xlsx")) 
+all_probes_df.to_csv(os.path.join(datapath, "churchland_learninglifespan_project_info_probes_rerun.csv"), index=False) 
+# all_probes_df.to_excel(os.path.join(datapath, "churchland_learninglifespan_project_info_probes_rerun.xlsx")) 
+
 # %%
